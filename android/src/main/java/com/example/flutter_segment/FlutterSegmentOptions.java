@@ -8,12 +8,14 @@ public class FlutterSegmentOptions {
     private final String writeKey;
     private final Boolean trackApplicationLifecycleEvents;
     private final Boolean amplitudeIntegrationEnabled;
+    private final Boolean moengageIntegrationEnabled;
     private final Boolean debug;
 
-    public  FlutterSegmentOptions(String writeKey, Boolean trackApplicationLifecycleEvents, Boolean amplitudeIntegrationEnabled, Boolean debug) {
+    public  FlutterSegmentOptions(String writeKey, Boolean trackApplicationLifecycleEvents, Boolean amplitudeIntegrationEnabled,Boolean moengageIntegrationEnabled, Boolean debug) {
         this.writeKey = writeKey;
         this.trackApplicationLifecycleEvents = trackApplicationLifecycleEvents;
         this.amplitudeIntegrationEnabled = amplitudeIntegrationEnabled;
+        this.moengageIntegrationEnabled = moengageIntegrationEnabled;
         this.debug = debug;
     }
 
@@ -29,6 +31,10 @@ public class FlutterSegmentOptions {
         return amplitudeIntegrationEnabled;
     }
 
+    public Boolean isMoengageIntegrationEnabled(){
+        return moengageIntegrationEnabled;
+    }
+
     public Boolean getDebug() {
         return debug;
     }
@@ -37,16 +43,18 @@ public class FlutterSegmentOptions {
         String writeKey = bundle.getString("com.claimsforce.segment.WRITE_KEY");
         Boolean trackApplicationLifecycleEvents = bundle.getBoolean("com.claimsforce.segment.TRACK_APPLICATION_LIFECYCLE_EVENTS");
         Boolean isAmplitudeIntegrationEnabled = bundle.getBoolean("com.claimsforce.segment.ENABLE_AMPLITUDE_INTEGRATION", false);
+        Boolean isMoengageIntegrationEnabled = bundle.getBoolean("com.claimsforce.segment.ENABLE_MOENGAGE_INTEGRATION", false);
         Boolean debug = bundle.getBoolean("com.claimsforce.segment.DEBUG", false);
-        return new FlutterSegmentOptions(writeKey, trackApplicationLifecycleEvents, isAmplitudeIntegrationEnabled, debug);
+        return new FlutterSegmentOptions(writeKey, trackApplicationLifecycleEvents, isAmplitudeIntegrationEnabled,isMoengageIntegrationEnabled, debug);
     }
 
     static FlutterSegmentOptions create(HashMap<String, Object> options) {
         String writeKey = (String) options.get("writeKey");
         Boolean trackApplicationLifecycleEvents = (Boolean) options.get("trackApplicationLifecycleEvents");
         Boolean isAmplitudeIntegrationEnabled = orFalse((Boolean) options.get("amplitudeIntegrationEnabled"));
+        Boolean isMoengageIntegrationEnabled = orFalse((Boolean) options.get("moengageIntegrationEnabled"));
         Boolean debug = orFalse((Boolean) options.get("debug"));
-        return new FlutterSegmentOptions(writeKey, trackApplicationLifecycleEvents, isAmplitudeIntegrationEnabled, debug);
+        return new FlutterSegmentOptions(writeKey, trackApplicationLifecycleEvents, isAmplitudeIntegrationEnabled,isMoengageIntegrationEnabled, debug);
     }
 
     private static Boolean orFalse(Boolean value) {
