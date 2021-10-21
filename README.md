@@ -94,6 +94,7 @@ void main() {
       writeKey: 'YOUR_WRITE_KEY_GOES_HERE',
       trackApplicationLifecycleEvents: false,
       amplitudeIntegrationEnabled: false,
+      moengageIntegrationEnabled: false,
       debug: false,
     ),
   );
@@ -110,6 +111,7 @@ void main() {
         <meta-data android:name="com.claimsforce.segment.WRITE_KEY" android:value="YOUR_WRITE_KEY_GOES_HERE" />
         <meta-data android:name="com.claimsforce.segment.TRACK_APPLICATION_LIFECYCLE_EVENTS" android:value="false" />
         <meta-data android:name="com.claimsforce.segment.ENABLE_AMPLITUDE_INTEGRATION" android:value="false" />
+        <meta-data android:name="com.claimsforce.segment.ENABLE_MOENGAGE_INTEGRATION" android:value="false" />
         <meta-data android:name="com.claimsforce.segment.DEBUG" android:value="false" />
     </application>
 </manifest>
@@ -127,6 +129,8 @@ void main() {
   <key>com.claimsforce.segment.TRACK_APPLICATION_LIFECYCLE_EVENTS</key>
   <false/>
   <key>com.claimsforce.segment.ENABLE_AMPLITUDE_INTEGRATION</key>
+  <false/>
+  <key>com.claimsforce.segment.ENABLE_MOENGAGE_INTEGRATION</key>
   <false/>
   [...]
 </dict>
