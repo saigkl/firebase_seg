@@ -11,7 +11,7 @@ linter:
 analyzer:
   strong-mode:
     # TODO: enable
-    #implicit-casts: false
+    implicit-casts: false
   errors:
     todo: warning
     file_names: error
