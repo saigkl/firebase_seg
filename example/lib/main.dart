@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           children: <Widget>[
             Spacer(),
             Center(
-              child: FlatButton(
+              child: ElevatedButton(
                 child: Text('TRACK ACTION WITH SEGMENT'),
                 onPressed: () {
                   Segment.track(
@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
             ),
             Spacer(),
             Center(
-              child: FlatButton(
+              child: ElevatedButton(
                 child: Text('Update Context'),
                 onPressed: () {
                   Segment.setContext({'custom': 123});
@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
             ),
             Spacer(),
             Center(
-              child: FlatButton(
+              child: ElevatedButton(
                 child: Text('Clear Context'),
                 onPressed: () {
                   Segment.setContext({});
@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
             ),
             Spacer(),
             Center(
-              child: FlatButton(
+              child: ElevatedButton(
                 child: Text('Disable'),
                 onPressed: () async {
                   await Segment.disable();
@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
             ),
             Spacer(),
             Center(
-              child: FlatButton(
+              child: ElevatedButton(
                 child: Text('Enable'),
                 onPressed: () async {
                   await Segment.enable();
@@ -107,7 +107,7 @@ class MyApp extends StatelessWidget {
             Spacer(),
             Platform.isIOS
                 ? Center(
-                    child: FlatButton(
+                    child: ElevatedButton(
                       child: Text('Debug mode'),
                       onPressed: () {
                         Segment.debug(true);
