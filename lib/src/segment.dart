@@ -8,7 +8,6 @@ export 'package:flutter_segment/src/segment_default_options.dart';
 export 'package:flutter_segment/src/segment_observer.dart';
 
 class Segment {
-  Segment._();
   static SegmentPlatform get _segment => SegmentPlatform.instance;
 
   static Future<void> identify({

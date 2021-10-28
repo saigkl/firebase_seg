@@ -55,6 +55,7 @@ class SegmentWeb {
         final user = analytics.callMethod('user');
         final anonymousId = user.callMethod('anonymousId');
         return anonymousId;
+        break;
       case 'reset':
         analytics.callMethod('reset');
         break;
