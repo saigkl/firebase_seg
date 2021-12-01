@@ -5,10 +5,13 @@ on:
   pull_request:
     branches:
       - master
+  push:
+    branches:
+      - master
 
 # Cancel jobs and just run the last one
 concurrency:
-  group: ${{ github.head_ref }}
+  group: ${{ github.workflow }}-${{ github.ref == 'refs/heads/master' && github.run_number || github.ref }}
   cancel-in-progress: true
 
 defaults:
