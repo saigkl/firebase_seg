@@ -15,7 +15,6 @@ import com.segment.analytics.Options;
 import com.segment.analytics.Middleware;
 import com.segment.analytics.integrations.BasePayload;
 import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
-import com.segment.analytics.android.integrations.moengage.MoEngageIntegration;
 import static com.segment.analytics.Analytics.LogLevel;
 
 import java.util.LinkedHashMap;
@@ -86,10 +85,6 @@ public class FlutterSegmentPlugin implements MethodCallHandler, FlutterPlugin {
 
       if (options.isAmplitudeIntegrationEnabled()) {
         analyticsBuilder.use(AmplitudeIntegration.FACTORY);
-      }
-
-      if (options.isMoengageIntegrationEnabled()) {
-        analyticsBuilder.use(MoEngageIntegration.FACTORY);
       }
 
       // Here we build a middleware that just appends data to the current context
@@ -348,7 +343,7 @@ public class FlutterSegmentPlugin implements MethodCallHandler, FlutterPlugin {
 
   /**
    * Enables / disables / sets custom integration properties so Segment can properly
-   * interact with 3rd parties, such as Amplitude, MoEngage.
+   * interact with 3rd parties, such as Amplitude.
    * @see https://segment.com/docs/connections/sources/catalog/libraries/mobile/android/#selecting-destinations
    * @see https://github.com/segmentio/analytics-android/blob/master/analytics/src/main/java/com/segment/analytics/Options.java
    */

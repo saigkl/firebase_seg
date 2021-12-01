@@ -3,7 +3,6 @@
 #import <Segment/SEGContext.h>
 #import <Segment/SEGMiddleware.h>
 #import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
-#import <Segment_MoEngage/SEGMoEngageIntegrationFactory.h> // This line is key for MoEngage integration
 
 @implementation FlutterSegmentPlugin
 // Contents to be appended to the context
@@ -322,9 +321,6 @@ static BOOL wasSetupFromFile = NO;
       [configuration use:[SEGAmplitudeIntegrationFactory instance]];
     }
 
-    if (isMoengageIntegrationEnabled) {
-      [configuration use:[SEGMoEngageIntegrationFactory instance]];
-    }
     return configuration;
 }
 
@@ -332,7 +328,6 @@ static BOOL wasSetupFromFile = NO;
     NSString *writeKey = [dict objectForKey: @"writeKey"];
     BOOL trackApplicationLifecycleEvents = [[dict objectForKey: @"trackApplicationLifecycleEvents"] boolValue];
     BOOL isAmplitudeIntegrationEnabled = [[dict objectForKey: @"amplitudeIntegrationEnabled"] boolValue];
-    BOOL isMoengageIntegrationEnabled = [[dict objectForKey: @"moengageIntegrationEnabled"] boolValue];
     SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:writeKey];
     configuration.trackApplicationLifecycleEvents = trackApplicationLifecycleEvents;
 
@@ -340,9 +335,6 @@ static BOOL wasSetupFromFile = NO;
       [configuration use:[SEGAmplitudeIntegrationFactory instance]];
     }
 
-    if (isMoengageIntegrationEnabled) {
-      [configuration use:[SEGMoEngageIntegrationFactory instance]];
-    }
     return configuration;
 }
 

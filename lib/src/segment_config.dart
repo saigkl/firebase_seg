@@ -3,14 +3,12 @@ class SegmentConfig {
     required this.writeKey,
     this.trackApplicationLifecycleEvents = false,
     this.amplitudeIntegrationEnabled = false,
-    this.moengageIntegrationEnabled = false,
     this.debug = false,
   });
 
   final String writeKey;
   final bool trackApplicationLifecycleEvents;
   final bool amplitudeIntegrationEnabled;
-  final bool moengageIntegrationEnabled;
   final bool debug;
 
   Map<String, dynamic> toMap() {
@@ -18,7 +16,6 @@ class SegmentConfig {
       'writeKey': writeKey,
       'trackApplicationLifecycleEvents': trackApplicationLifecycleEvents,
       'amplitudeIntegrationEnabled': amplitudeIntegrationEnabled,
-      'moengageIntegrationEnabled': moengageIntegrationEnabled,
       'debug': debug,
     };
   }
