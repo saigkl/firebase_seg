@@ -8,6 +8,7 @@
 @implementation FlutterSegmentPlugin
 // Contents to be appended to the context
 static NSDictionary *_appendToContextMiddleware;
+static BOOL wasSetupFromFile = NO;
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     FlutterMethodChannel* channel = [FlutterMethodChannel
@@ -16,7 +17,10 @@ static NSDictionary *_appendToContextMiddleware;
     FlutterSegmentPlugin* instance = [[FlutterSegmentPlugin alloc] init];
     
     SEGAnalyticsConfiguration *configuration = [FlutterSegmentPlugin createConfigFromFile];
-    [instance setup:configuration];
+    if(configuration) {
+        [instance setup:configuration];
+        wasSetupFromFile = YES;
+    }
     
     [registrar addMethodCallDelegate:instance channel:channel];
 }
@@ -104,7 +108,7 @@ static NSDictionary *_appendToContextMiddleware;
           );
         };
         
-        configuration.middlewares = @[
+        configuration.sourceMiddleware = @[
           [[SEGBlockMiddleware alloc] initWithBlock:contextMiddleware]
         ];
         [SEGAnalytics setupWithConfiguration:configuration];
@@ -115,7 +119,7 @@ static NSDictionary *_appendToContextMiddleware;
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"config" isEqualToString:call.method]) {
+  if ([@"config" isEqualToString:call.method] && !wasSetupFromFile) {
     [self config:call result:result];
   } else if ([@"identify" isEqualToString:call.method]) {
     [self identify:call result:result];
@@ -309,6 +313,9 @@ static NSDictionary *_appendToContextMiddleware;
     BOOL trackApplicationLifecycleEvents = [[dict objectForKey: @"com.claimsforce.segment.TRACK_APPLICATION_LIFECYCLE_EVENTS"] boolValue];
     BOOL isAmplitudeIntegrationEnabled = [[dict objectForKey: @"com.claimsforce.segment.ENABLE_AMPLITUDE_INTEGRATION"] boolValue];
     BOOL isMoengageIntegrationEnabled = [[dict objectForKey: @"com.claimsforce.segment.ENABLE_MOENGAGE_INTEGRATION"] boolValue];
+    if(!writeKey) {
+        return nil;
+    }
     SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:writeKey];
     configuration.trackApplicationLifecycleEvents = trackApplicationLifecycleEvents;
 
