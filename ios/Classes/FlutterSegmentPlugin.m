@@ -3,6 +3,7 @@
 #import <Segment/SEGContext.h>
 #import <Segment/SEGMiddleware.h>
 #import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
+#import <Segment_MoEngage/SEGMoEngageIntegrationFactory.h> // This line is key for MoEngage integration
 
 @implementation FlutterSegmentPlugin
 // Contents to be appended to the context
@@ -347,6 +348,9 @@ static BOOL wasSetupFromFile = NO;
       ((void (^)())@{
           @"amplitude" : ^{
              [configuration use:[SEGAmplitudeIntegrationFactory instance]];
+          },
+          @"moengage" : ^{
+             [configuration use:[SEGMoEngageIntegrationFactory instance]];
           },
       }[o] ?: ^{
           //Do Nothing

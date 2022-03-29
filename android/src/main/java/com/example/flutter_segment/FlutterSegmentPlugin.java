@@ -15,6 +15,7 @@ import com.segment.analytics.Options;
 import com.segment.analytics.Middleware;
 import com.segment.analytics.integrations.BasePayload;
 import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
+import com.segment.analytics.android.integrations.moengage.MoEngageIntegration;
 import static com.segment.analytics.Analytics.LogLevel;
 
 import java.util.LinkedHashMap;
@@ -76,6 +77,9 @@ public class FlutterSegmentPlugin implements MethodCallHandler, FlutterPlugin {
         switch(item){
           case "amplitude":
             analyticsBuilder.use(AmplitudeIntegration.FACTORY);
+            break;
+          case "moengage":
+            analyticsBuilder.use(MoEngageIntegration.FACTORY);
             break;
           default:
             // do nothing

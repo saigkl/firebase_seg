@@ -1,4 +1,4 @@
-enum SegmentIntegrationItemType { amplitude, unknown }
+enum SegmentIntegrationItemType { amplitude, moengage, unknown }
 
 class SegmentConfig {
   SegmentConfig({
