@@ -3,6 +3,8 @@
 #import <Segment/SEGContext.h>
 #import <Segment/SEGMiddleware.h>
 #import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
+#import <Segment_Firebase/SEGFirebaseIntegrationFactory.h>
+
 
 @implementation FlutterSegmentPlugin
 // Contents to be appended to the context
@@ -347,6 +349,9 @@ static BOOL wasSetupFromFile = NO;
       ((void (^)())@{
           @"amplitude" : ^{
              [configuration use:[SEGAmplitudeIntegrationFactory instance]];
+          },
+          @"firebase" : ^{
+             [configuration use:[SEGFirebaseIntegrationFactory instance]];
           },
       }[o] ?: ^{
           //Do Nothing
