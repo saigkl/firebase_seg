@@ -17,6 +17,7 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://maven.google.com' }
     }
 }
 
@@ -39,6 +40,7 @@ android {
         implementation ("com.moengage:moengage-segment-integration:5.5.01") {
             transitive = true
         }
+        implementation 'com.segment.analytics.android.integrations:firebase:+@aar'
     }
 }
 

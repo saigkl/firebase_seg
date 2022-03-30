@@ -4,6 +4,8 @@
 #import <Segment/SEGMiddleware.h>
 #import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
 #import <Segment_MoEngage/SEGMoEngageIntegrationFactory.h> // This line is key for MoEngage integration
+#import <Segment_Firebase/SEGFirebaseIntegrationFactory.h>
+
 
 @implementation FlutterSegmentPlugin
 // Contents to be appended to the context
@@ -351,6 +353,8 @@ static BOOL wasSetupFromFile = NO;
           },
           @"moengage" : ^{
              [configuration use:[SEGMoEngageIntegrationFactory instance]];
+          @"firebase" : ^{
+             [configuration use:[SEGFirebaseIntegrationFactory instance]];
           },
       }[o] ?: ^{
           //Do Nothing
