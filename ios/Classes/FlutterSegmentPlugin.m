@@ -3,6 +3,7 @@
 #import <Segment/SEGContext.h>
 #import <Segment/SEGMiddleware.h>
 #import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
+#import <Segment_MoEngage/SEGMoEngageIntegrationFactory.h> // This line is key for MoEngage integration
 #import <Segment_Firebase/SEGFirebaseIntegrationFactory.h>
 
 
@@ -349,6 +350,9 @@ static BOOL wasSetupFromFile = NO;
       ((void (^)())@{
           @"amplitude" : ^{
              [configuration use:[SEGAmplitudeIntegrationFactory instance]];
+          },
+          @"moengage" : ^{
+             [configuration use:[SEGMoEngageIntegrationFactory instance]];
           },
           @"firebase" : ^{
              [configuration use:[SEGFirebaseIntegrationFactory instance]];

@@ -1,4 +1,9 @@
-enum SegmentIntegrationItemType { amplitude, firebase, unknown }
+enum SegmentIntegrationItemType {
+  amplitude,
+  moengage,
+  firebase,
+  unknown,
+}
 
 class SegmentConfig {
   SegmentConfig({

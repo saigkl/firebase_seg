@@ -37,6 +37,9 @@ android {
     dependencies {
         implementation 'com.segment.analytics.android:analytics:4.10.0'
         implementation 'com.segment.analytics.android.integrations:amplitude:3.0.3'
+        implementation ("com.moengage:moengage-segment-integration:5.6.00") {
+            transitive = true
+        }
         implementation 'com.segment.analytics.android.integrations:firebase:+@aar'
     }
 }
