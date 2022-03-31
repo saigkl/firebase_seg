@@ -353,6 +353,7 @@ static BOOL wasSetupFromFile = NO;
           },
           @"moengage" : ^{
              [configuration use:[SEGMoEngageIntegrationFactory instance]];
+          },
           @"firebase" : ^{
              [configuration use:[SEGFirebaseIntegrationFactory instance]];
           },
