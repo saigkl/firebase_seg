@@ -5,6 +5,9 @@
 #import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
 #import <Segment_MoEngage/SEGMoEngageIntegrationFactory.h> // This line is key for MoEngage integration
 #import <Segment_Firebase/SEGFirebaseIntegrationFactory.h>
+#import <Segment_Facebook_App_Events/SEGFacebookAppEventsIntegrationFactory.h>
+@import AdSupport;
+
 
 
 @implementation FlutterSegmentPlugin
@@ -343,6 +346,14 @@ static BOOL wasSetupFromFile = NO;
     BOOL trackApplicationLifecycleEvents = [[dict objectForKey: @"trackApplicationLifecycleEvents"] boolValue];
     NSArray *integrationItems = [dict objectForKey: @"integrationItems"];
     SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:writeKey];
+    // Enable advertising collection
+    configuration.enableAdvertisingTracking = YES;
+    // Set the block to be called when the advertisingID is needed
+    // NOTE: In iOS 14, you'll need to manually do authorization elsewhere and only when it has been authorized, return the advertisingIdentifier to segment via the block below
+    configuration.adSupportBlock = ^{
+        return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    };
+
     configuration.trackApplicationLifecycleEvents = trackApplicationLifecycleEvents;
 
     for (NSString* o in integrationItems)
@@ -356,6 +367,9 @@ static BOOL wasSetupFromFile = NO;
           },
           @"firebase" : ^{
              [configuration use:[SEGFirebaseIntegrationFactory instance]];
+          },
+          @"facebook" : ^{
+             [configuration use:[SEGFacebookAppEventsIntegrationFactory instance]];
           },
       }[o] ?: ^{
           //Do Nothing
