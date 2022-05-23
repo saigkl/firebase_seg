@@ -5,7 +5,6 @@
 #import <Segment_Amplitude/SEGAmplitudeIntegrationFactory.h>
 #import <Segment_MoEngage/SEGMoEngageIntegrationFactory.h> // This line is key for MoEngage integration
 #import <Segment_Firebase/SEGFirebaseIntegrationFactory.h>
-#import <Segment_Facebook_App_Events/SEGFacebookAppEventsIntegrationFactory.h>
 @import AdSupport;
 
 
@@ -367,9 +366,6 @@ static BOOL wasSetupFromFile = NO;
           },
           @"firebase" : ^{
              [configuration use:[SEGFirebaseIntegrationFactory instance]];
-          },
-          @"facebook" : ^{
-             [configuration use:[SEGFacebookAppEventsIntegrationFactory instance]];
           },
       }[o] ?: ^{
           //Do Nothing

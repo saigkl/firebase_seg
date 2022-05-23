@@ -2,7 +2,6 @@ enum SegmentIntegrationItemType {
   amplitude,
   moengage,
   firebase,
-  facebook,
   unknown,
 }
 

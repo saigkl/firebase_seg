@@ -19,7 +19,6 @@ A new flutter plugin project.
   s.dependency 'Segment-Amplitude', '3.3.2'
   s.dependency 'Segment-MoEngage', '6.1.0'
   s.dependency 'Segment-Firebase', '2.7.9'
-  s.dependency 'Segment-Facebook-App-Events', '2.1.3'
   s.ios.deployment_target = '11.0'
 
   # Added because Segment-Amplitude dependencies on iOS cause this error:
