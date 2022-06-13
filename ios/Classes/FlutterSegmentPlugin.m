@@ -181,6 +181,7 @@ static BOOL wasSetupFromFile = NO;
     NSString *userId = call.arguments[@"userId"];
     NSDictionary *traits = call.arguments[@"traits"];
     NSDictionary *options = call.arguments[@"options"];
+    
 
     [[SEGAnalytics sharedAnalytics] identify: userId
                       traits: traits
